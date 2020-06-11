@@ -1,42 +1,34 @@
 #![no_std]
-extern crate groestl_aesni;
 #[macro_use]
 extern crate digest;
+extern crate groestl_aesni;
 
-use digest::dev::{main_test, Test};
+use digest::dev::digest_test;
 
-#[test]
-fn groestl_256_0() {
-    let tests = new_tests!("groestl_256/test32_0");
-    main_test::<groestl_aesni::Groestl256>(&tests);
-}
+new_test!(
+    groestl_224,
+    "groestl224",
+    groestl_aesni::Groestl224,
+    digest_test
+);
 
-#[test]
-fn groestl_256_17() {
-    let tests = new_tests!("groestl_256/test32_17");
-    main_test::<groestl_aesni::Groestl256>(&tests);
-}
+new_test!(
+    groestl_256,
+    "groestl256",
+    groestl_aesni::Groestl256,
+    digest_test
+);
 
-#[test]
-fn groestl_256_32() {
-    let tests = new_tests!("groestl_256/test32_32");
-    main_test::<groestl_aesni::Groestl256>(&tests);
-}
+new_test!(
+    groestl_384,
+    "groestl384",
+    groestl_aesni::Groestl384,
+    digest_test
+);
 
-#[test]
-fn groestl_256_64() {
-    let tests = new_tests!("groestl_256/test32_64");
-    main_test::<groestl_aesni::Groestl256>(&tests);
-}
-
-#[test]
-fn groestl_256_123() {
-    let tests = new_tests!("groestl_256/test32_123");
-    main_test::<groestl_aesni::Groestl256>(&tests);
-}
-
-#[test]
-fn groestl_256_131() {
-    let tests = new_tests!("groestl_256/test32_131");
-    main_test::<groestl_aesni::Groestl256>(&tests);
-}
+new_test!(
+    groestl_512,
+    "groestl512",
+    groestl_aesni::Groestl512,
+    digest_test
+);
